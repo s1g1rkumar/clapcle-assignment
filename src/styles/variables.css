@@ -1,0 +1,95 @@
+:root {
+   /* ----------------------------------
+     Base Colors
+  ---------------------------------- */
+   --color-white: #ffffff;
+   --color-black: #000000;
+
+   /* ----------------------------------
+     Brand Colors
+  ---------------------------------- */
+   --color-primary: #8257fb;
+   --color-primary-light: #cbb6ff;
+   --color-primary-dark: #5734c7;
+
+   --color-secondary: #67bed9;
+   --color-secondary-light: #b4e6f6;
+   --color-secondary-dark: #3d8fab;
+
+   /* ----------------------------------
+     System Status Colors
+  ---------------------------------- */
+   --color-success: #3ecf8e;
+   --color-danger: #ff5c60;
+   --color-warning: #ffb648;
+   --color-info: #4da3ff;
+
+   /* ----------------------------------
+     Neutral / Grayscale System
+  ---------------------------------- */
+   --color-text: #1e293b;
+   --color-text-light: #64748b;
+   --color-text-muted: #94a3b8;
+   --color-placeholder: #a8b3c7;
+
+   --color-border: #e5e7eb;
+   --color-border-light: #f1f3f5;
+   --color-border-hover: #cfd5e1;
+
+   --color-background: #fafbfd;
+   --color-background-alt: #f9fafc;
+   --color-surface: #f4f6f9;
+
+   --color-disabled-bg: #f1f3f8;
+   --color-disabled-text: #9ba7b6;
+
+   /* ----------------------------------
+     Typography
+  ---------------------------------- */
+   --font-family: "Inter", "Lato", sans-serif;
+
+   /* Font Sizes */
+   --font-size-xs: 0.75rem;
+   --font-size-sm: 0.875rem;
+   --font-size-md: 1rem;
+   --font-size-lg: 1.125rem;
+   --font-size-xl: 1.25rem;
+
+   /* Font Weights */
+   --font-weight-light: 300;
+   --font-weight-regular: 400;
+   --font-weight-medium: 500;
+   --font-weight-semibold: 600;
+   --font-weight-bold: 700;
+
+   /* ----------------------------------
+     Radius
+  ---------------------------------- */
+   --radius-sm: 4px;
+   --radius-md: 8px;
+   --radius-lg: 12px;
+   --radius-full: 50px;
+
+   /* ----------------------------------
+     Spacing System
+  ---------------------------------- */
+   --space-1: 4px;
+   --space-2: 8px;
+   --space-3: 12px;
+   --space-4: 16px;
+   --space-5: 20px;
+   --space-6: 24px;
+   --space-8: 32px;
+
+   /* ----------------------------------
+     Shadows
+  ---------------------------------- */
+   --shadow-sm: 0 1px 3px rgba(16, 24, 40, 0.05);
+   --shadow-md: 0 2px 6px rgba(16, 24, 40, 0.1);
+   --shadow-lg: 0 4px 16px rgba(16, 24, 40, 0.12);
+
+   /* ----------------------------------
+     Transitions
+  ---------------------------------- */
+   --transition-default: 0.25s ease;
+}

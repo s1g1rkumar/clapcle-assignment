@@ -1,0 +1,25 @@
+.phone-input-wrapper {
+  gap: 1px;
+}
+
+.phone-code-select {
+  min-width: 85px;
+  padding: 13px;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.phone-number-input {
+  /* background-color: transparent !important; */
+  flex-grow: 1;
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+.phone-border-danger {
+  border-color: var(--color-danger) !important;
+  border: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0px;
+  border-bottom: 1px solid;
+}

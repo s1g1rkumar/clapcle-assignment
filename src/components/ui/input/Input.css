@@ -1,0 +1,95 @@
+.input-field {
+  width: 100%;
+  padding: var(--space-3);
+  font-family: var(--font-family);
+  font-size: var(--font-size-md);
+  color: var(--color-text);
+  background-color: var(--color-white);
+  border: none;
+  border-radius: var(--radius-sm);
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* .input-field:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(124, 93, 250, 0.2);
+} */
+
+.input-field:hover:not(:disabled) {
+  border-color: var(--color-border-hover);
+}
+
+.input-field:disabled {
+  background-color: var(--color-background-light);
+  cursor: not-allowed;
+}
+
+.input-field--error {
+  border-color: var(--color-danger) !important;
+  border: none;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0px;
+  border-bottom: 1px solid;
+}
+
+/* .input-field--error:focus {
+  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
+} */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-4, 16px);
+  width: 100%;
+}
+
+.form-field__label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: var(--space-1, 4px);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-sm, 0.875rem);
+}
+
+.form-field__error {
+  margin-top: var(--space-1, 4px);
+  color: var(--color-danger);
+  font-size: var(--font-size-sm, 0.875rem);
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.form-field__required-star {
+  color: var(--color-danger);
+  margin-left: 4px;
+  font-weight: 700;
+}
+
+.suffix {
+  background-color: var(--color-white);
+  padding: 9.4px;
+  box-sizing: border-box;
+  border-radius: var(--radius-sm);
+  border-bottom-left-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+
+}
+
+.adorned_input {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.adorned_base{
+  gap: 2px;
+}

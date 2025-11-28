@@ -1,0 +1,106 @@
+
+/* ------------------------------------ */
+body.modal-open {
+    /* Prevents main document scrolling when modal is open */
+    overflow: hidden;
+}
+
+/* ------------------------------------ */
+/* 2. Modal Container (Outer Wrapper)   */
+/* ------------------------------------ */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center; /* Center vertically for shorter content */
+    justify-content: center;
+    overflow-y: auto; /* Allow vertical scroll if content is too tall */
+    padding: 3rem 1rem; /* Padding for when content overflows */
+    z-index: 1000; /* Ensure it is above everything */
+    /* Add a subtle transition for smoother appearance */
+    opacity: 1; /* Modal component handles mounting/unmounting */
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* ------------------------------------ */
+/* 3. Backdrop (Glass Background)       */
+/* ------------------------------------ */
+.modal-backdrop {
+    position: fixed;
+    inset: 0; /* Equivalent to top: 0; right: 0; bottom: 0; left: 0; */
+    width: 100%;
+    height: 100%;
+    
+    /* Glass Effect */
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+    backdrop-filter: blur(8px); /* Blur effect (Glass) */
+    -webkit-backdrop-filter: blur(8px); /* For Safari support */
+    
+    /* Smooth transition for glass effect */
+    transition: backdrop-filter 0.3s ease;
+}
+
+/* ------------------------------------ */
+/* 4. Modal Content                     */
+/* ------------------------------------ */
+.modal-content {
+    position: relative;
+    z-index: 10; /* Above the backdrop */
+    margin: auto; /* Helps centering when screen is wide */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for entry */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    
+    /* Default content properties */
+    min-width: 320px;
+    max-width: 90%;
+    background-color: white; /* Default background */
+    border-radius: 12px;
+}
+
+/* Specific size/style for standard modal (e.g., the Unsaved Changes warning) */
+.modal-default {
+    /* Base style for regular modal, can be overridden by className prop */
+    padding: 20px;
+}
+
+/* Specific style for fullscreen modal */
+.modal-fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    overflow-y: auto;
+}
+
+/* ------------------------------------ */
+/* 5. Close Button                      */
+/* ------------------------------------ */
+.modal-close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    cursor: pointer;
+    border: none;
+    background: #f1f1f1;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    transition: all 0.2s ease;
+    z-index: 20; /* Ensure button is above modal content */
+}
+
+.modal-close-btn:hover {
+    background: #e0e0e0;
+    color: #333;
+    transform: rotate(90deg); /* Advanced touch: rotation on hover */
+}
