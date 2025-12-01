@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import Sidebar from "./sidebar";
 import "./home.css";
 import NewCustomerForm from "./newCustomerForm";
+import { useActiveSectionTracking } from "../../customHooks/useActiveSectionTracking";
 
 export type SectionId =
   | "company"
@@ -13,20 +14,17 @@ export type SectionId =
   | string;
 
 const Index: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<SectionId>("company");
-
+  const { activeSection, handleSidebarClick } = useActiveSectionTracking();
   return (
-    <div className="flex flex-start customer-layout">
+    <div className="customer-layout">
       <div>
         <Sidebar
           activeSection={activeSection}
-          setActiveSection={setActiveSection}
+          handleSidebarClick={handleSidebarClick}
         />
       </div>
       <div className="customer-container">
         <NewCustomerForm
-          activeSection={activeSection}
-          setActiveSection={setActiveSection}
         />
       </div>
     </div>

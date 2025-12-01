@@ -24,7 +24,7 @@ const ContactInfoForm: React.FC<SectionProps> = ({
   };
   return (
     <Card title="Contact Information" id="contact">
-      <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3 gap-2">
+      <div className="form-fields-grid">
         <FormField
           label="Contact Person name"
           required
@@ -36,7 +36,7 @@ const ContactInfoForm: React.FC<SectionProps> = ({
             error={errors.contactName}
           />
         </FormField>
-        <FormField label="Contact Number" required error={errors.email}>
+        <FormField label="Contact Number" required error={errors.phoneNumber}>
           <PhoneInput
             countryCode={globalState.countryCode}
             onCodeChange={(val) => update("countryCode", val)}

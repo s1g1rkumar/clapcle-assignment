@@ -29,11 +29,7 @@
   border-color: var(--color-border-hover);
 }
 
-/* .select-field:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(124, 93, 250, 0.2);
-} */
+
 
 .select-field:disabled {
   background-color: var(--color-background-light);
@@ -41,7 +37,6 @@
   opacity: 0.7;
 }
 
-/* Error State */
 .select-field--error {
   border-color: var(--color-danger) !important;
   border: none;
@@ -49,7 +44,3 @@
   border-bottom-left-radius: 0px;
   border-bottom: 1px solid var(--color-danger);
 }
-
-/* .select-field--error:focus {
-  box-shadow: 0 0 0 3px rgba(229, 62, 62, 0.2);
-} */

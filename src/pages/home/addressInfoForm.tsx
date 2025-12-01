@@ -1,17 +1,24 @@
 import type React from "react";
-import type { Address, GlobalState } from "./newCustomerForm";
+import type { GlobalState } from "./newCustomerForm";
 import { Button, Card, FormField, Input, Select } from "../../components/ui";
 import "./home.css";
 import { DeleteIcon, EditIcon } from "../../components/icons";
 
-// ⚠️ STEP 1: Update SectionProps to include validateField
 interface SectionProps {
   globalState: GlobalState;
   setGlobalState: React.Dispatch<React.SetStateAction<GlobalState>>;
   errors: { [key: string]: string | undefined };
-  validateField: (field: string, value: string) => string | undefined; // Added
+  validateField: (field: string, value: string) => string | undefined;
 }
 
+interface Address {
+  type: string;
+  street: string;
+  city: string;
+  country: string;
+  zip: string;
+  isEditable?: boolean;
+}
 
 interface BaseAddressProps {
   address: Address;
@@ -38,23 +45,22 @@ const DisplayAddressCard: React.FC<DisplayAddressCardProps> = ({
   onToggleEdit,
   onDelete,
 }) => (
-  // ℹ️ Note: Display cards typically don't show errors, so we ignore the errors prop here.
   <div
     key={index}
-    className="p-4 bg-white flex justify-between items-start address-display-card"
+    className="address-display-card"
   >
     <div>
       <h3 className="font-bold">{address.type} Address</h3>
-      <p className="mt-1 address-display-text">
+      <p className="address-display-text">
         {address.street} | {address.city} | {address.country} {address.zip}
       </p>
     </div>
-    <div className="flex items-center gap-4">
-      <div onClick={() => onToggleEdit(index)} className="cursor-pointer">
+    <div className="address-actions">
+      <div onClick={() => onToggleEdit(index)} >
         <EditIcon size="16" />
       </div>
       {index > 0 && (
-        <div onClick={() => onDelete(index)} className="cursor-pointer">
+        <div onClick={() => onDelete(index)} >
           <DeleteIcon size="16" color="var(--color-danger)" />
         </div>
       )}
@@ -69,54 +75,49 @@ const EditableAddressForm: React.FC<EditableAddressFormProps> = ({
   onToggleEdit,
   onDelete,
   errors,
-  validateField, // Destructured
+  validateField,
 }) => {
   const handleChange = (
     field: keyof Omit<Address, "isEditable">,
     value: string
   ) => {
-    // 1. Update the parent state
     onUpdate(index, field, value);
 
-    // 2. Construct the indexed key (e.g., addresses[0].street) and validate
     const indexedKey = `addresses[${index}].${field}`;
-    validateField(indexedKey, value); 
+    validateField(indexedKey, value);
   };
-  
-  // Helper to get the correct error key
-  const getErrorKey = (field: keyof Omit<Address, "isEditable">) => 
+
+  const getErrorKey = (field: keyof Omit<Address, "isEditable">) =>
     `addresses[${index}].${field}`;
 
   return (
-    <div className="border border-purple-300 p-4 rounded-lg mb-6 bg-purple-50">
-      <h4 className="font-semibold text-purple-700 mb-3 flex justify-between items-center">
+    <div className="address-editable-form">
+      <h4 className="font-semibold address-editable-title">
         {address.type || `Address ${index + 1}`} - Edit Mode
-        <div className="flex gap-2 items-center">
+        <div className="address-actions">
           <Button
             type="button"
             variant="text"
-            // NOTE: Clicking Save here should ideally run validateForm or validate all address fields before toggling edit mode off.
-            onClick={() => onToggleEdit(index)} 
+            onClick={() => onToggleEdit(index)}
           >
             Save
           </Button>
           {index > 0 && (
             <div
               onClick={() => onDelete(index)}
-              className="inline-block cursor-pointer mr-2"
+              
             >
-              <DeleteIcon size="16" color="var(--color-danger)"/>
+              <DeleteIcon size="16" color="var(--color-danger)" />
             </div>
           )}
         </div>
       </h4>
 
-      <div className="grid grid-cols-1 md-grid-cols-2 gap-4">
+      <div className="form-fields-grid">
         <FormField
           label="Address Type"
           required
-          // Note: address type is usually not validated against external rules, only 'required'
-          error={errors[getErrorKey("type")]} 
+          error={errors[getErrorKey("type")]}
         >
           <Select
             options={[
@@ -125,6 +126,7 @@ const EditableAddressForm: React.FC<EditableAddressFormProps> = ({
             ]}
             value={address.type}
             onChange={(val) => handleChange("type", String(val))}
+            error={errors[getErrorKey("type")]}
           />
         </FormField>
         <FormField
@@ -138,11 +140,7 @@ const EditableAddressForm: React.FC<EditableAddressFormProps> = ({
             error={errors[getErrorKey("street")]}
           />
         </FormField>
-        <FormField
-          label="City"
-          required
-          error={errors[getErrorKey("city")]}
-        >
+        <FormField label="City" required error={errors[getErrorKey("city")]}>
           <Input
             value={address.city}
             onChange={(e) => handleChange("city", e.target.value)}
@@ -189,7 +187,7 @@ const AddressDetailsSection: React.FC<SectionProps> = ({
   ) => {
     setGlobalState((prev) => ({
       ...prev,
-      addresses: prev.addresses.map((addr, i) =>
+      addresses: prev.addresses.map((addr: Address, i: number) =>
         i === index ? { ...addr, [field]: value } : addr
       ),
     }));
@@ -198,7 +196,7 @@ const AddressDetailsSection: React.FC<SectionProps> = ({
   const handleToggleEdit = (index: number) => {
     setGlobalState((prev) => ({
       ...prev,
-      addresses: prev.addresses.map((addr, i) =>
+      addresses: prev.addresses.map((addr: Address, i: number) =>
         i === index ? { ...addr, isEditable: !addr.isEditable } : addr
       ),
     }));
@@ -225,15 +223,17 @@ const AddressDetailsSection: React.FC<SectionProps> = ({
     if (globalState.addresses.length > 1) {
       setGlobalState((prev) => ({
         ...prev,
-        addresses: prev.addresses.filter((_, i) => i !== index),
+        addresses: prev.addresses.filter(
+          (_: Address, i: number) => i !== index
+        ),
       }));
     }
   };
 
   return (
     <Card title="Primary Address Information" id="address">
-      <div className="flex flex-col gap-4">
-        {globalState.addresses.map((addr, index) =>
+      <div className="list-container">
+        {globalState.addresses.map((addr: Address, index: number) =>
           addr?.isEditable ? (
             <EditableAddressForm
               key={index}
@@ -243,7 +243,7 @@ const AddressDetailsSection: React.FC<SectionProps> = ({
               onToggleEdit={handleToggleEdit}
               onDelete={handleDeleteAddress}
               errors={errors}
-              validateField={validateField} // ⚠️ STEP 2: Passed down
+              validateField={validateField}
             />
           ) : (
             <DisplayAddressCard

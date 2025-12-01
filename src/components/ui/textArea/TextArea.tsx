@@ -13,7 +13,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
 
     const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setInternalValue(e.target.value);
-      if (onChange) onChange(e); // allow parent to control if needed
+      if (onChange) onChange(e); 
     };
 
     return (

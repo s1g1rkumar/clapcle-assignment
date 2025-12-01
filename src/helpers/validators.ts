@@ -9,18 +9,16 @@ export const email: ValidationRule = (value) =>
   /^\S+@\S+\.\S+$/.test(value) ? undefined : "Invalid email format";
 
 export const phone: ValidationRule = (value) =>
-  /^[0-9\s+()-]+$/.test(value) ? undefined : "Invalid phone number";
+  /^(?=(?:.*\d){7,15})[0-9\s()+-]+$/.test(value) ? undefined : "Invalid phone number";
 
 export const zip: ValidationRule = (value) =>
   /^[0-9]{4,10}$/.test(value) ? undefined : "Invalid ZIP Code";
 
-// GST Number (Indian format)
 export const gstNo: ValidationRule = (value) =>
   /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[A-Z0-9]{1}[Z]{1}[A-Z0-9]{1}$/.test(value)
     ? undefined
     : "Invalid GST Number";
 
-// PAN Number (Indian format)
 export const panNo: ValidationRule = (value) =>
   /^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(value)
     ? undefined

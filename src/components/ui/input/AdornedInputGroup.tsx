@@ -16,17 +16,17 @@ const AdornedInputGroup: React.FC<AdornedInputGroupProps> = ({
   ...rest
 }) => {
   const baseGroupClasses =
-    "flex items-end adorned_base";
+    "adorned_base";
 
   const focusClasses =
-    "focus-within:border-indigo-500 focus-within:ring-2 focus-within:ring-indigo-500/20";
+    "input-field:focus";
 
   const errorGroupClasses = error
     ? "input-field--error"
     : "";
 
   const suffixClasses =
-    "flex item-center justify-center suffix";
+    "suffix";
 
   return (
     <div className={`${baseGroupClasses} ${focusClasses} ${errorGroupClasses} ${inputGroupClassName}`}>

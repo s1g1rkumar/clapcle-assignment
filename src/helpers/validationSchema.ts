@@ -57,6 +57,7 @@ export const validationSchema: Record<string, ValidationRule[]> = {
   // TDS, TAN, IEC, numeric fields
   tdsDeduction: [],
   tdsApplication: [],
+  tdsDeducteeType: [required],
   gstinNo: [gstNo],
   tdsAccNo: [textShort],
   tdsApplyDropdown: [textShort],

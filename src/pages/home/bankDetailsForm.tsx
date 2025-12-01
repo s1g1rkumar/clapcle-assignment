@@ -40,14 +40,13 @@ const BankDetailsForm: React.FC<BankDetailsFormProps> = ({
   ) => {
     onUpdate(index, field, value);
 
-    // ✅ PASS THE INDEXED KEY for real-time validation
     const indexedKey = getErrorKey(field);
-    validateField(indexedKey, value); // Now validateField will handle the mapping to the rules
+    validateField(indexedKey, value); 
   };
 
   return (
-    <div className="border border-gray-200 p-4 rounded-lg mb-6 bg-gray-50">
-      <h3 className="text-lg font-semibold text-gray-800 mb-4 flex justify-between items-center">
+    <div className=" p-4 mb-6">
+      <h3 className="bank-account-title">
         Bank #{index + 1}
         {index > 0 && (
           <div onClick={() => onDelete(index)} className="cursor-pointer">
@@ -56,7 +55,7 @@ const BankDetailsForm: React.FC<BankDetailsFormProps> = ({
         )}
       </h3>
 
-      <div className="grid grid-cols-1 md-grid-cols-3 gap-4">
+      <div className="form-fields-grid">
         <FormField
           label="Bank Name"
           required
@@ -105,8 +104,6 @@ const BankDetailsForm: React.FC<BankDetailsFormProps> = ({
             error={errors[`bankAccounts[${index}].micrNumber`]}
           />
         </FormField>
-        <div className="hidden md-block"></div>
-        <div className="hidden md-block"></div>
       </div>
     </div>
   );
@@ -154,7 +151,6 @@ const BankDetailsSection: React.FC<SectionProps> = ({
           accountNumber: "",
           ifscCode: "",
           micrNumber: "",
-          errors: {},
         },
       ],
     }));

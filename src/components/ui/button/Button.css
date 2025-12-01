@@ -29,7 +29,6 @@
   font-size: var(--font-size-lg);
 }
 
-/* Variants */
 .btn--primary {
   background-color: var(--color-primary);
   color: var(--color-white);
@@ -58,13 +57,11 @@
   background-color: rgba(124, 93, 250, 0.1);
 }
 
-/* Disabled */
 .btn:disabled {
   opacity: 0.6;                    
   cursor: not-allowed;             
 }
 
-/* Spinner */
 .btn__spinner {
   width: 1.125rem;                 
   height: 1.125rem;

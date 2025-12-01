@@ -39,7 +39,6 @@
   width: 32px;
   height: 32px;
   background-color: transparent;
-  /* background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#60A5FA" opacity="0.8"><path d="M4 3h16a2 2 0 012 2v14a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2zm0 2v14h16V5H4zm3 8l3 3 5-5 3 3V5H4v8h3z"/></svg>'); */
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;

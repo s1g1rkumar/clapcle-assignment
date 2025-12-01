@@ -12,6 +12,9 @@ import PageIcon from './PageIcon';
 import PaymentIcon from './PaymentIcon';
 import PerecntIcon from './PercentIcon'
 import CameraIcon from './CameraIcon'
+import InfoIcon from './InfoIcon ';
+import CorrectIcon from './CorrectIcon ';
+import WaringIcon from './WarningICon'
 
 
-export { CameraIcon, PercentIcon, BankIcon, CompanyIcon, EditIcon, DeleteIcon, DropDownIcon, RupeeIcon, AddressIcon, ContactaIcon, CreditIcon, PageIcon, PaymentIcon, PerecntIcon }
+export { WaringIcon, CorrectIcon, InfoIcon, CameraIcon, PercentIcon, BankIcon, CompanyIcon, EditIcon, DeleteIcon, DropDownIcon, RupeeIcon, AddressIcon, ContactaIcon, CreditIcon, PageIcon, PaymentIcon, PerecntIcon }

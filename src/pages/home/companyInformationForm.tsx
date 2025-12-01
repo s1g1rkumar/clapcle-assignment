@@ -55,7 +55,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
         onImageChange={handleImageChange}
         error={errors.profileImageFile}
       />
-      <div className="grid grid-cols-1 md-grid-cols-2 lg-grid-cols-3 gap-2">
+      <div className="form-fields-grid">
         <FormField
           label="GST Registration Type"
           required
@@ -65,6 +65,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
             options={GstRegTypesList}
             onChange={(val) => update("gstRegType", val)}
             value={globalState.gstRegType}
+            error={errors.gstRegType}
           />
         </FormField>
         <FormField label="GST Number" required error={errors.gstNo}>
@@ -73,6 +74,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
             placeholder="Enter GST Number"
             value={globalState.gstNo}
             onChange={(e) => update("gstNo", e.target.value)}
+            error={errors.gstNo}
           />
         </FormField>
 
@@ -80,6 +82,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
           <Input
             value={globalState.panNo}
             onChange={(e) => update("panNo", e.target.value)}
+            error={errors.panNo}
           />
         </FormField>
 
@@ -99,6 +102,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
           <Input
             value={globalState.legalName}
             onChange={(e) => update("legalName", e.target.value)}
+            error={errors.legalName}
           />
         </FormField>
 
@@ -106,6 +110,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
           <Input
             value={globalState.nickName}
             onChange={(e) => update("nickName", e.target.value)}
+            error={errors.nickName}
           />
         </FormField>
 
@@ -114,6 +119,7 @@ const CompanyInformationForm: React.FC<SectionProps> = ({
             options={parentGroupList}
             onChange={(val) => update("parentGroup", val)}
             value={globalState.parentGroup}
+            error={errors.parentGroup}
           />
         </FormField>
 
